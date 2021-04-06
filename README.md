@@ -9,6 +9,7 @@ Require:
 - Python >= 3.8
 - Django = 3.1.7
 - httpx
+- dotenv
 
 Install python for your OS directly from official web page
 https://www.python.org/
@@ -23,9 +24,13 @@ for Windows
 ```
 py -m pip install Django
 ```
- and the library to make http request
+ the library to make http request
  ```
  pip install httpx
+ ```
+finally, library to .env files support
+ ```
+ pip install pip install python-dotenv
  ```
 for more information about these installations see: 
 
@@ -38,7 +43,10 @@ With django installed and configured, in your project path can run the *manage.p
 ```
 python manage.py migrate
 ```
+To configure environment variables, change file *.env.example* to *.env* and write your configuration to login and  secret key.
+
 After that, the project is ready to work in it (See Django [documentation](https://docs.djangoproject.com/en/3.1/contents/)).
+
 
 To see the application, run the command 
 ```

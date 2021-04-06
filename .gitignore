@@ -107,7 +107,7 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-.env
+store/.env
 .venv
 env/
 venv/
@@ -320,7 +320,7 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-.env
+store/.env
 .venv
 env/
 venv/
@@ -460,7 +460,7 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-.env
+store/.env
 .venv
 env/
 venv/
@@ -495,3 +495,6 @@ cython_debug/
 sqldiff.exe
 sqlite3.exe
 sqlite3_analyzer.exe
+
+store/.env
+simpleStore/.env

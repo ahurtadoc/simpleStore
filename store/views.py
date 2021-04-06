@@ -2,10 +2,11 @@ import httpx
 from base64 import b64encode
 from hashlib import sha1
 from datetime import datetime, timedelta
-from os import urandom
+from os import urandom, getenv, path
 from django.shortcuts import render, get_object_or_404, get_list_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.decorators.http import require_POST
+from dotenv import load_dotenv
 
 from .forms import buyerForm
 from .models import Orders
@@ -124,12 +125,18 @@ def auth_data():
     """
     Generate auth data to payment gateway
     """
+    # Absolute path
+    BASEDIR = path.abspath(path.dirname(__file__))
+    # Connect the path with your '.env' file name
+    load_dotenv(path.join(BASEDIR, '.env'))
+
     nonce = hex(int.from_bytes(urandom(16), byteorder="big")).encode('utf8')
     seed = datetime.now().isoformat().encode('utf8')  # Current date in iso format
+    secret_key = getenv('SECRET_KEY').encode('utf8')
     secret_key = '024h1IlD'.encode('utf8')
     trankey = sha1(nonce + seed + secret_key).digest()  # to use sha1, parameters need to encode in utf8
     data = {
-        'login': '6dd490faf9cb87a9862245da41170ff2',
+        'login': getenv('LOGIN'),
         'seed': seed.decode('utf8'),
         'tranKey': b64encode(trankey).decode('utf8'),
         'nonce': b64encode(nonce).decode('utf8')
