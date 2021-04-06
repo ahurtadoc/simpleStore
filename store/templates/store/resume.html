@@ -1,0 +1,22 @@
+{% extends 'store/base.html' %}
+Check your order to Pay
+
+{% block content %}
+    <div class="card " style="width: 40rem;">
+        <div class="card-header">
+            Order #{{ order.id }}
+        </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><span class="fw-bold col-2">Name:</span> <span class="offset-1">{{ order.customer_name }}</span></li>
+            <li class="list-group-item"><span class="fw-bold col-2">Email:</span> <span class="offset-1">{{ order.customer_email }}</span></li>
+            <li class="list-group-item"><span class="fw-bold col-2">Mobile:</span> <span class="offset-1">{{ order.customer_mobile }}</span></li>
+            <li class="list-group-item"><span class="fw-bold col-2">Status:</span> <span class="offset-1">{{ order.status }}</span></li>
+            <li class="list-group-item"><span class="fw-bold col-2">Amount:</span> <span class="offset-1">50.000 COP</span></li>
+
+          </ul>
+        <form class="card-footer" action="../pay/{{ order.id }}" method="post">
+            {%  csrf_token %}
+            <button class="btn btn-primary" type="submit">Pay</button>
+        </form>
+    </div>
+{% endblock %}
