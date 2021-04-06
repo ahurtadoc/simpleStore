@@ -36,7 +36,7 @@ https://docs.djangoproject.com/en/3.1/topics/install/
 
 With django installed and configured, in your project path can run the *manage.py* file with the specific commands to config database:
 ```
-python manage.py makemigrations
+python manage.py migrate
 ```
 After that, the project is ready to work in it (See Django [documentation](https://docs.djangoproject.com/en/3.1/contents/)).
 

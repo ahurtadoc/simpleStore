@@ -14,7 +14,7 @@ from .models import Orders
 # Views
 
 def index(request):
-    orders = get_list_or_404(Orders)  # get all orders from db
+    orders = Orders.objects.all()  # get all orders from db
     return render(request, 'store/index.html', {'orders': orders, 'code': None})
 
 
